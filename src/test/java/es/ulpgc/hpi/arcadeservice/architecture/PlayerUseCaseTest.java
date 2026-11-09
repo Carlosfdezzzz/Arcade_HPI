@@ -30,4 +30,15 @@ class PlayerUseCaseTest {
         assertThrows(IllegalArgumentException.class, () -> useCase.create("Ada"));
         assertEquals(1, useCase.list().size());
     }
+
+    @Test
+    void rejectsDuplicateNicknameWithSpaces() {
+        var useCase = new PlayerUseCaseImpl(new PlayerRepositoryImpl());
+        useCase.create("Ada");
+
+        assertThrows(IllegalArgumentException.class,
+                () -> useCase.create(" Ada "));
+
+        assertEquals(1, useCase.list().size());
+    }
 }

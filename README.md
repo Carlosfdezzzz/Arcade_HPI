@@ -26,6 +26,8 @@ If you work from the course's `2026:2027` folder on macOS, copy or clone this re
 | `GET` | `/api/players` | Lists all players. |
 | `GET` | `/api/players/{id}` | Returns one player, or `404` if it does not exist. |
 | `POST` | `/api/players` | Creates a player from `{"nickname":"Ada"}`; returns `201` and a `Location` header. |
+| `POST` | `/api/players/{id}/scores` | Adds positive points from `{"points":10}` and returns the updated player with `200`. Unknown player: `404`. Zero or negative points: `400`. |
+| `GET` | `/api/leaderboard` | Lists players by descending score, then nickname alphabetically. Optional positive integer `limit`. Invalid limit: `400`. |
 
 Example:
 
